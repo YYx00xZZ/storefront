@@ -7,22 +7,23 @@ import {
 } from "@/checkout/graphql/generated/operations";
 import type { CheckoutFetchResult } from "@/checkout/lib/checkout-types";
 import { toTypedDocument } from "@/checkout/lib/server/to-typed-document";
-import { liveQuery } from "@/lib/saleor";
+import { sessionQuery } from "@/lib/saleor";
 import { checkoutGraphqlLocaleVariables } from "@/lib/checkout-locale";
 import type { LocaleSlug } from "@/config/locale";
 
 const checkoutQueryDocument = toTypedDocument<CheckoutQuery, CheckoutQueryVariables>(CheckoutDocument);
 
 /**
- * Fetch checkout for the checkout RSC page (public — checkout ID is the credential).
+ * Fetch checkout for the checkout RSC page (the checkout ID is the credential).
  *
- * The checkout ID is the credential — no customer session or app token.
+ * Sent with the customer's token when signed in (anonymous otherwise), so Saleor returns
+ * `checkout.user` to its owner instead of a permission error.
  */
 export async function fetchCheckoutOnServer(
 	checkoutId: string,
 	localeSlug?: LocaleSlug,
 ): Promise<CheckoutFetchResult> {
-	const result = await liveQuery(checkoutQueryDocument, {
+	const result = await sessionQuery(checkoutQueryDocument, {
 		variables: { id: checkoutId, ...(await checkoutGraphqlLocaleVariables(localeSlug)) },
 	});
 

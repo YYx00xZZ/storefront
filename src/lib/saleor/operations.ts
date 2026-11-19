@@ -66,7 +66,7 @@ const CORE_OPERATIONS = {
 	AccountRequestDeletion: mutate(),
 
 	// Checkout surface (operation names are the GraphQL names, not the TS exports).
-	checkout: live(),
+	checkout: session(),
 	checkoutCommerceContext: live(),
 	channel: live(),
 	addressValidationRules: live(),

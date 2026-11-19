@@ -42,7 +42,7 @@ Rows are keyed by file and enclosing function, not line, so formatting does not 
 | liveQuery        | checkoutCommerceContextDocument         | —                                             | src/checkout/lib/server/enrich-commerce-context.ts › readCheckoutMetadata                     |
 | liveQuery        | channelQueryDocument                    | —                                             | src/checkout/lib/server/fetch-channel-countries.ts › fetchChannelCountriesOnServer            |
 | rawMutation      | —                                       | —                                             | src/checkout/lib/server/fetch-channel-default-country.ts › fetchChannelDefaultCountryOnServer |
-| liveQuery        | checkoutQueryDocument                   | —                                             | src/checkout/lib/server/fetch-checkout.ts › fetchCheckoutOnServer                             |
+| sessionQuery     | checkoutQueryDocument                   | —                                             | src/checkout/lib/server/fetch-checkout.ts › fetchCheckoutOnServer                             |
 | liveQuery        | ordersByNumberDocument                  | —                                             | src/checkout/lib/server/fetch-order-by-number.ts › fetchOrderByNumberOnServer                 |
 | liveQuery        | orderQueryDocument                      | —                                             | src/checkout/lib/server/fetch-order.ts › fetchOrderOnServer                                   |
 | sessionQuery     | CurrentUserOrdersPaginatedDocument      | —                                             | src/lib/account/get-orders.ts › getCurrentUserOrders                                          |
